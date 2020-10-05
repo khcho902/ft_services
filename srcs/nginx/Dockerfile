@@ -1,7 +1,9 @@
 FROM alpine:3.12.0
 
-RUN apk update
-RUN apk add nginx openssl openssh-server
+RUN apk update && apk add \
+		nginx \
+		openssl \
+		openssh-server
 
 COPY ./index.html /var/www/localhost/htdocs
 COPY ./run.sh /tmp/
