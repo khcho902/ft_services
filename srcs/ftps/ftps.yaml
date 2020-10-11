@@ -99,3 +99,4 @@ spec:
     port: 21
   - name: pftp-data-0
     port: 30000
+  loadBalancerIP: 192.168.99.101
