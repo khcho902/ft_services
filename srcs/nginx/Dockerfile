@@ -9,6 +9,8 @@ COPY ./index.html /var/www/localhost/htdocs
 COPY ./run.sh /tmp/
 RUN chmod +x /tmp/run.sh
 
+COPY srcs/default.conf /etc/nginx/conf.d/
+
 RUN mkdir -p /ssl/
 RUN openssl req -x509 -nodes -newkey rsa:2048 -keyout /ssl/cert.key -out /ssl/cert.crt -days 365 -subj '/CN=localhost'
 
