@@ -21,6 +21,12 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 5050
+          env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: password
 ---
 apiVersion: v1
 kind: Service

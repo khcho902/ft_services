@@ -93,4 +93,4 @@ metadata:
   name: mysql-secret
 type: Opaque
 stringData:
-  password: admin
+  password: admin1234
