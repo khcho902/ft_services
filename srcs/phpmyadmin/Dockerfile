@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.12.0
 RUN apk update
 #RUN apk add php7 php7-fpm php7-opcache php7-gd php7-mysqli \
 #	php7-zlib php7-curl php7-mbstring php7-json php7-session
@@ -12,6 +12,9 @@ RUN mv /phpMyAdmin-5.0.4-all-languages /var/www/localhost/htdocs/phpmyadmin
 RUN rm -rf /var/cache/apk/*
 
 COPY srcs/default.conf /etc/nginx/conf.d/
+
+RUN mkdir /var/www/localhost/htdocs/phpmyadmin/tmp
+RUN chmod 777 /var/www/localhost/htdocs/phpmyadmin/tmp
 
 RUN mkdir -p /run/nginx
 							

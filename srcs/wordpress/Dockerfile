@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.12.0
 RUN apk update && apk add \
 		nginx \
 		php7 php7-fpm php7-mbstring php7-session \
