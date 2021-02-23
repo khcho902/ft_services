@@ -77,10 +77,28 @@ spec:
         volumeMounts:
         - name: ftps-config
           mountPath: /etc/vsftpd
+        - name: ftps-persistent-storage
+          mountPath: /ftp
       volumes:
-        - name: ftps-config
-          configMap:
-            name: ftps-config
+      - name: ftps-config
+        configMap:
+          name: ftps-config
+      - name: ftps-persistent-storage
+        persistentVolumeClaim:
+          claimName: ftps-pv-claim
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ftps-pv-claim
+  labels:
+    app: ftps
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
 ---
 apiVersion: v1
 kind: Service

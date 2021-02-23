@@ -5,8 +5,8 @@ openssl req -newkey rsa:4096 -days 365 -nodes -x509 \
 			-keyout /etc/ssl/private/vsftpd.key \
 			-out /etc/ssl/certs/vsftpd.crt
 
-mkdir -p /var/ftp
-adduser -D -h /var/ftp ${FTP_USERNAME}
+mkdir -p /ftp
+adduser -D -h /ftp ${FTP_USERNAME}
 echo "${FTP_USERNAME}:${FTP_PASSWORD}" | chpasswd
 
 vsftpd /etc/vsftpd/vsftpd.conf
