@@ -45,6 +45,12 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 5000
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 3
           volumeMounts:
             - name: phpmyadmin-config
               subPath: config.inc.php

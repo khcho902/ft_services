@@ -27,6 +27,11 @@ spec:
       - name: nginx
         image: nginx-image
         imagePullPolicy: Never
+        livenessProbe:
+          tcpSocket:
+            port: 22
+          initialDelaySeconds: 15
+          periodSeconds: 3
         env:
         - name: SSH_USERNAME
           valueFrom:

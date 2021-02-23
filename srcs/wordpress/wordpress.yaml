@@ -21,6 +21,12 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 5050
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5050
+            initialDelaySeconds: 15
+            periodSeconds: 3
           env:
           - name: MYSQL_ROOT_PASSWORD
             valueFrom:

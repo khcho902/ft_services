@@ -15,11 +15,10 @@ RUN wget https://wordpress.org/latest.tar.gz \
 COPY srcs/wp-config.php /var/www/localhost/htdocs/wordpress/
 COPY srcs/default.conf /etc/nginx/conf.d/
 COPY srcs/wordpress.sql /tmp/
+COPY srcs/run.sh /tmp/
 
 RUN mkdir -p /run/nginx
 
 EXPOSE 5050
 
-CMD mysql -hmysql -Dwordpress -uroot -p$MYSQL_ROOT_PASSWORD < /tmp/wordpress.sql \
-		&& php-fpm7 \
-		&& nginx -g "daemon off;"
+ENTRYPOINT ["/bin/sh", "/tmp/run.sh"]
