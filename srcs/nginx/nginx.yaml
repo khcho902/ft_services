@@ -30,7 +30,7 @@ spec:
         livenessProbe:
           tcpSocket:
             port: 22
-          initialDelaySeconds: 15
+          initialDelaySeconds: 5
           periodSeconds: 3
         env:
         - name: SSH_USERNAME
